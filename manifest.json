@@ -1,0 +1,44 @@
+
+
+{
+  "manifest_version": 3,
+  "name": "HSU(한성대) 팔레트",
+  "version": "1.1.2",
+  "description": "한성대 e-class 화면의 테마를 원하는 대로 바꾸고 저장합니다.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://learn.hansung.ac.kr/*"],
+      "exclude_matches": [
+        "https://learn.hansung.ac.kr/mod/*/viewer.php*",
+        "https://learn.hansung.ac.kr/login.php*",
+        "https://learn.hansung.ac.kr/login/*"
+      ],
+      "js": ["theme.js"],
+      "css": ["theme.css"],
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["https://learn.hansung.ac.kr/mod/*/viewer.php*"],
+      "js": ["viewer.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icons/fab.webp",
+        "fonts/PretendardVariable.woff2",
+        "fonts/Jua-Regular.woff2",
+        "fonts/NanumSquareRoundR.woff2",
+        "fonts/NanumSquareRoundB.woff2"
+      ],
+      "matches": ["https://learn.hansung.ac.kr/*"]
+    }
+  ]
+}
