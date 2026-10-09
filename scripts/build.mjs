@@ -12,7 +12,6 @@ import { fileURLToPath } from "node:url";
 
 import { ZipArchive } from "archiver";
 import { build, transform } from "esbuild";
-import JavaScriptObfuscator from "javascript-obfuscator";
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const releaseRoot = path.join(projectRoot, "release");
@@ -32,30 +31,6 @@ const runtimeFiles = [
 ];
 
 const javascriptEntries = ["theme.js", "viewer.js"];
-
-const obfuscationOptions = {
-  compact: true,
-  controlFlowFlattening: false,
-  deadCodeInjection: false,
-  debugProtection: false,
-  disableConsoleOutput: false,
-  identifierNamesGenerator: "hexadecimal",
-  numbersToExpressions: false,
-  renameGlobals: false,
-  renameProperties: false,
-  selfDefending: false,
-  simplify: true,
-  splitStrings: false,
-  stringArray: true,
-  stringArrayCallsTransform: false,
-  stringArrayEncoding: [],
-  stringArrayIndexShift: true,
-  stringArrayRotate: true,
-  stringArrayShuffle: true,
-  stringArrayThreshold: 0.5,
-  transformObjectKeys: false,
-  unicodeEscapeSequence: false,
-};
 
 async function ensureParent(filePath) {
   await mkdir(path.dirname(filePath), { recursive: true });
@@ -84,12 +59,9 @@ async function buildJavascript(relativePath) {
   });
 
   const bundledCode = result.outputFiles[0].text;
-  const obfuscatedCode = JavaScriptObfuscator
-    .obfuscate(bundledCode, obfuscationOptions)
-    .getObfuscatedCode();
 
   await ensureParent(targetPath);
-  await writeFile(targetPath, `${obfuscatedCode}\n`, "utf8");
+  await writeFile(targetPath, bundledCode, "utf8");
 }
 
 async function buildCss() {

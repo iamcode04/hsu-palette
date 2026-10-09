@@ -7,7 +7,7 @@
 - 설치: [Chrome 웹 스토어](https://chromewebstore.google.com/detail/hsu%ED%95%9C%EC%84%B1%EB%8C%80-%ED%8C%94%EB%A0%88%ED%8A%B8/clhpdcfmifehbciceddjcgiimnjflgad?hl=ko)
 - 사용 사이트: [한성대학교 e-class](https://learn.hansung.ac.kr/)
 - 소스 코드: [iamcode04/hsu-palette](https://github.com/iamcode04/hsu-palette)
-- 버전: `1.1.2` (GitHub `main` 기준)
+- 버전: `1.1.3` (GitHub `main` 기준)
 - 라이선스: [MIT](./LICENSE)
 
 > 이 README는 GitHub `main` 브랜치의 소스 코드를 기준으로 작성했습니다.
@@ -110,10 +110,10 @@ npm ci
 npm run build
 ```
 
-빌드 스크립트는 JavaScript 번들링·압축·난독화와 CSS 압축을 수행하고, 아이콘·글꼴·외부 라이선스 고지를 복사합니다.
+빌드 스크립트는 JavaScript 번들링·압축과 CSS 압축을 수행하고, 아이콘·글꼴·외부 라이선스 고지를 복사합니다.
 
 - `release/unpacked/`: 압축해제된 확장 프로그램으로 로드할 폴더
-- `release/hsu-palette-1.1.2.zip`: 현재 소스 버전을 기준으로 한 배포용 ZIP
+- `release/hsu-palette-1.1.3.zip`: 현재 소스 버전을 기준으로 한 배포용 ZIP
 
 자세한 내용은 [BUILD.md](./BUILD.md)를 참고해 주세요. 소스를 수정한 뒤에는 `chrome://extensions`에서 확장 프로그램을 새로고침하고, e-class 페이지도 새로고침합니다.
 
